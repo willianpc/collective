@@ -39,10 +39,12 @@ def sim_distance(prefs, person1, person2):
 	return 1 / (1 + sum_of_squares)
 
 
-def get_all():
+#parametro indica que o rating deve ser maior do que criteria
+def get_all(criteria = 0):
 	res = [(p1, p2, sim_distance(critics, p1, p2)) 
 	for p1 in people 
 	for p2 in people 
-	if p1 != p2]
+	if p1 != p2
+	and sim_distance(critics, p1, p2) > criteria]
 
 	return res
